@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bani · Family tree app for Indonesian extended families</title>
+<meta name="description" content="Bani is a family tree app for Indonesian bani and trah families: a tree that grows downward on your phone, invites by branch, and family events with RSVP.">
+<meta property="og:title" content="Bani · Family tree for extended families">
+<meta property="og:description" content="A family tree that grows downward, easy to read on your phone.">
+<meta property="og:image" content="img/home.webp">
+<meta name="theme-color" content="#8A4B2A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;background:#F2EFEB;color:#2A1D16;font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#8A4B2A}a:hover{color:#6E3A1F}
+h1,h2,h3{text-wrap:balance}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] .faq-plus{transform:rotate(45deg)}
+.faq-plus{transition:transform .2s ease}
+.btn-primary:hover{background:#6E3A1F !important;color:#FFFFFF !important}
+.btn-ghost:hover{background:#E8E1D8 !important}
+.mode-btn:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible{outline:3px solid #2F5E66;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+<style>html{scroll-behavior:smooth}</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; background: #F2EFEB; color: #2A1D16; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden">
+
+<!-- NAV -->
+<header style="border-bottom: 1px solid #E2D5C6; background: #F2EFEB">
+<nav style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #2A1D16">
+<svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#8A4B2A"></rect><g fill="#F2EFEB"><ellipse cx="32" cy="13" rx="5.5" ry="8.5"></ellipse><ellipse cx="32" cy="31" rx="5.5" ry="8.5"></ellipse><ellipse cx="23" cy="22" rx="8.5" ry="5.5"></ellipse><ellipse cx="41" cy="22" rx="8.5" ry="5.5"></ellipse></g><circle cx="32" cy="22" r="2.2" fill="#8A4B2A"></circle><g fill="none" stroke="#F2EFEB" stroke-width="2.4" stroke-linecap="round"><path d="M32 39V55"></path><path d="M32 45C27 48 23 51 21 55"></path><path d="M32 45C37 48 41 51 43 55"></path><path d="M15 55H49"></path></g></svg>
+<span style="font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 600; letter-spacing: -0.01em">Bani</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 15px; font-weight: 500">
+<a href="#fitur" style="color: #4A3A30; text-decoration: none">Features</a>
+<a href="#harga" style="color: #4A3A30; text-decoration: none">Pricing</a>
+<a href="#faq" style="color: #4A3A30; text-decoration: none">FAQ</a>
+<a class="btn-primary" href="#unduh" style="background: #8A4B2A; color: #FFFFFF; text-decoration: none; padding: 10px 18px; border-radius: 999px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get it free</a>
+</div>
+</nav>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position: relative; overflow: hidden">
+<svg aria-hidden="true" width="560" height="560" viewBox="0 0 64 64" style="position: absolute; right: -140px; top: -60px; opacity: 0.07"><g fill="#8A4B2A"><ellipse cx="32" cy="13" rx="5.5" ry="8.5"></ellipse><ellipse cx="32" cy="31" rx="5.5" ry="8.5"></ellipse><ellipse cx="23" cy="22" rx="8.5" ry="5.5"></ellipse><ellipse cx="41" cy="22" rx="8.5" ry="5.5"></ellipse></g></svg>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 72px 24px 88px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #2F5E66">For Indonesian bani and trah families</p>
+<h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(38px, 5.4vw, 68px); line-height: 1.04; letter-spacing: -0.02em; color: #2A1D16">A family tree that grows downward, easy to read on your phone.</h1>
+<p style="margin: 0; max-width: 34em; font-size: 18px; color: #4A3A30">Each branch fills in its own family. Then everyone gathers again for reunions, halal bihalal, or haul memorials, with a tidy guest list.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btn-primary" href="#unduh" style="display: inline-flex; align-items: center; gap: 10px; background: #8A4B2A; color: #FFFFFF; text-decoration: none; padding: 14px 22px; border-radius: 14px; font-weight: 600; min-height: 52px; box-sizing: border-box">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"></path></svg>
+Get it on Google Play</a>
+<a class="btn-ghost" href="#fitur" style="display: inline-flex; align-items: center; color: #2A1D16; text-decoration: none; padding: 14px 22px; border-radius: 14px; font-weight: 600; border: 1px solid #C49A76; min-height: 52px; box-sizing: border-box">See how it works</a>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; color: #6B5A4E">
+<li style="display: flex; align-items: center; gap: 8px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #C49A76"></span>Free for your first 50 members</li>
+<li style="display: flex; align-items: center; gap: 8px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #C49A76"></span>Only invited relatives can see it</li>
+</ul>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; justify-content: center; align-items: flex-end; gap: 0; position: relative; min-height: 520px">
+<div style="width: 46%; max-width: 250px; border-radius: 34px; border: 8px solid #2A1D16; overflow: hidden; background: #2A1D16; box-shadow: 0 30px 60px -30px rgba(42,29,22,.45); transform: rotate(-4deg) translateX(18px); position: relative; z-index: 1">
+<img src="img/home.webp" alt="Bani home: next event and family trees" style="display: block; width: 100%; height: auto">
+</div>
+<div style="width: 50%; max-width: 270px; border-radius: 36px; border: 8px solid #2A1D16; overflow: hidden; background: #2A1D16; box-shadow: 0 40px 70px -30px rgba(42,29,22,.5); transform: translateY(-36px) rotate(3deg); position: relative; z-index: 2">
+<img src="img/lineage.webp" alt="Lineage view: the tree grows downward" style="display: block; width: 100%; height: auto">
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROBLEM -->
+<section style="background: #FBF9F6; border-top: 1px solid #E2D5C6; border-bottom: 1px solid #E2D5C6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #2F5E66">Why Bani</p>
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em">Our family history lives in places that are easy to lose.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px">
+<div style="padding: 24px; border-radius: 18px; background: #F2EFEB; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">The elders' memory</h3>
+<p style="margin: 0; color: #4A3A30; font-size: 15px">Only a few people remember who descends from whom. When they pass, the stories go with them.</p>
+</div>
+<div style="padding: 24px; border-radius: 18px; background: #F2EFEB; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">Photocopied charts</h3>
+<p style="margin: 0; color: #4A3A30; font-size: 15px">A chart gets printed once and never updated. New births and marriages go unrecorded.</p>
+</div>
+<div style="padding: 24px; border-radius: 18px; background: #F2EFEB; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">WhatsApp groups</h3>
+<p style="margin: 0; color: #4A3A30; font-size: 15px">Addresses, phone numbers, and condolence news sink under hundreds of messages. Hard to find again.</p>
+</div>
+<div style="padding: 24px; border-radius: 18px; background: #F2EFEB; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">Wall-sized charts</h3>
+<p style="margin: 0; color: #4A3A30; font-size: 15px">Horizontal trees need constant scrolling and zooming on a phone. Past four generations, they are unreadable.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FITUR: 3 MODE -->
+<section id="fitur">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #2F5E66">Family tree</p>
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em">One tree, three ways to read it.</h2>
+<p style="margin: 0; color: #4A3A30; font-size: 17px; max-width: 32em">Pick what fits: follow a line of descent, look at one person with their parents and children, or see the whole chart.</p>
+<div role="group" aria-label="Choose a view" style="display: flex; flex-wrap: wrap; gap: 8px; padding: 6px; background: #E8E1D8; border-radius: 999px; align-self: flex-start">
+<button class="mode-btn" type="button" data-mode="lineage" aria-pressed="true" style="border: 0; cursor: pointer; font-family: inherit; font-size: 15px; font-weight: 600; padding: 10px 20px; border-radius: 999px; min-height: 44px; background: #8A4B2A; color: #FFFFFF">Lineage</button>
+<button class="mode-btn" type="button" data-mode="focus" aria-pressed="false" style="border: 0; cursor: pointer; font-family: inherit; font-size: 15px; font-weight: 600; padding: 10px 20px; border-radius: 999px; min-height: 44px; background: transparent; color: #4A3A30">Focus</button>
+<button class="mode-btn" type="button" data-mode="chart" aria-pressed="false" style="border: 0; cursor: pointer; font-family: inherit; font-size: 15px; font-weight: 600; padding: 10px 20px; border-radius: 999px; min-height: 44px; background: transparent; color: #4A3A30">Chart</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; border-radius: 18px; background: #FBF9F6; border: 1px solid #E2D5C6; max-width: 32em">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700"><span id="mode-title">Lineage: grows downward</span></h3>
+<p style="margin: 0; color: #4A3A30; font-size: 15px"><span id="mode-body">Read the line of descent top to bottom, like a list. No sideways scrolling, however many generations deep.</span></p>
+</div>
+</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; justify-content: center">
+<div style="width: 100%; max-width: 300px; border-radius: 38px; border: 9px solid #2A1D16; overflow: hidden; background: #2A1D16; box-shadow: 0 40px 70px -34px rgba(42,29,22,.5)">
+<img id="mode-img" src="img/lineage.webp" alt="Lineage view" style="display: block; width: 100%; height: auto">
+</div>
+</div>
+</div>
+</section>
+
+<!-- FITUR: 3 KARTU -->
+<section>
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 96px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px">
+<article style="display: flex; flex-direction: column; gap: 20px; padding: 28px 28px 0; border-radius: 24px; background: #FBF9F6; border: 1px solid #E2D5C6; overflow: hidden">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8A4B2A">Invite by branch</p>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; line-height: 1.2">Every branch fills in its own family.</h3>
+<p style="margin: 0; color: #4A3A30; font-size: 15px">Send an invite over WhatsApp with an 8-letter code. Choose Contributor or View only, and set how many generations down they can edit.</p>
+</div>
+<div style="margin-top: auto; height: 300px; overflow: hidden; display: flex; justify-content: center">
+<img src="img/invite.webp" alt="Invite screen with Contributor and View only roles" style="width: 78%; height: auto; align-self: flex-start; border-radius: 22px 22px 0 0; border: 6px solid #2A1D16; border-bottom: 0">
+</div>
+</article>
+<article style="display: flex; flex-direction: column; gap: 20px; padding: 28px 28px 0; border-radius: 24px; background: #2F5E66; color: #F2EFEB; overflow: hidden">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #CFE2E4">Family events</p>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; line-height: 1.2; color: #FFFFFF">Reunions, halal bihalal, and haul without manual tallies.</h3>
+<p style="margin: 0; color: #E3EEEF; font-size: 15px">Relatives answer Going, Maybe, or Not going, plus how many are coming. Organizers see attendance per branch and dues per household.</p>
+</div>
+<div style="margin-top: auto; height: 300px; overflow: hidden; display: flex; justify-content: center">
+<img src="img/event.webp" alt="Reunion details with RSVP and attendance per branch" style="width: 78%; height: auto; align-self: flex-start; border-radius: 22px 22px 0 0; border: 6px solid #1E3E44; border-bottom: 0">
+</div>
+</article>
+<article style="display: flex; flex-direction: column; gap: 20px; padding: 28px 28px 0; border-radius: 24px; background: #FBF9F6; border: 1px solid #E2D5C6; overflow: hidden">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8A4B2A">Memory album</p>
+<h3 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; line-height: 1.2">Ancestors' faces, kept on their profiles.</h3>
+<p style="margin: 0; color: #4A3A30; font-size: 15px">Photos, birth and death dates, spouse, occupation, and address on a map. Birthdays and haul memorials show up as reminders automatically.</p>
+</div>
+<div style="margin-top: auto; height: 300px; overflow: hidden; display: flex; justify-content: center">
+<img src="img/profile.webp" alt="Family member profile with photo and details" style="width: 78%; height: auto; align-self: flex-start; border-radius: 22px 22px 0 0; border: 6px solid #2A1D16; border-bottom: 0">
+</div>
+</article>
+</div>
+</section>
+
+<!-- CARA KERJA -->
+<section style="background: #8A4B2A; color: #F7EFE8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; color: #FFFFFF; max-width: 720px">Start with one branch. The rest will follow.</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 32px">
+<li style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #C49A76; padding-top: 20px">
+<span style="font-family: 'Fraunces', Georgia, serif; font-size: 40px; line-height: 1; color: #E9C9AE">1</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #FFFFFF">Create your bani tree</h3>
+<p style="margin: 0; font-size: 15px; color: #F2DFD0">Sign in with Google, name your bani, then add the ancestors and your immediate family.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #C49A76; padding-top: 20px">
+<span style="font-family: 'Fraunces', Georgia, serif; font-size: 40px; line-height: 1; color: #E9C9AE">2</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #FFFFFF">Invite each branch</h3>
+<p style="margin: 0; font-size: 15px; color: #F2DFD0">Send a link to one person per branch. They add their own children, grandchildren, and spouses.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #C49A76; padding-top: 20px">
+<span style="font-family: 'Fraunces', Georgia, serif; font-size: 40px; line-height: 1; color: #E9C9AE">3</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #FFFFFF">Gather at events</h3>
+<p style="margin: 0; font-size: 15px; color: #F2DFD0">Create an event, share it to the WhatsApp group, and see who is coming.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- HARGA -->
+<section id="harga">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #2F5E66">Pricing per family tree</p>
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12">One person subscribes, the whole family benefits.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; align-items: stretch">
+<div style="display: flex; flex-direction: column; gap: 20px; padding: 32px; border-radius: 24px; background: #FBF9F6; border: 1px solid #E2D5C6">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Free</h3>
+<p style="margin: 0; color: #6B5A4E; font-size: 14px">To start recording your immediate family</p>
+</div>
+<p style="margin: 0; display: flex; align-items: baseline; gap: 6px"><span style="font-family: 'Fraunces', Georgia, serif; font-size: 44px; font-weight: 600; line-height: 1">Rp0</span></p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #4A3A30">
+<li>1 family tree</li>
+<li>Up to 50 members</li>
+<li>Contributors edit up to 2 generations</li>
+<li>6 album photos</li>
+<li>Events and RSVP</li>
+</ul>
+<a class="btn-ghost" href="#unduh" style="margin-top: auto; display: flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 12px; border: 1px solid #C49A76; color: #2A1D16; text-decoration: none; font-weight: 600">Start free</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px; padding: 32px; border-radius: 24px; background: #FBF9F6; border: 2px solid #8A4B2A; position: relative">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Family</h3>
+<p style="margin: 0; color: #6B5A4E; font-size: 14px">For a bani that is starting to grow</p>
+</div>
+<p style="margin: 0; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap"><span style="font-family: 'Fraunces', Georgia, serif; font-size: 44px; font-weight: 600; line-height: 1; color: #8A4B2A">Rp49rb</span><span style="color: #6B5A4E; font-size: 15px">/ year</span></p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #4A3A30">
+<li>1 family tree</li>
+<li>Unlimited members</li>
+<li>Branches with unlimited generations</li>
+<li>60 album photos</li>
+<li>Excel export</li>
+</ul>
+<a class="btn-primary" href="#unduh" style="margin-top: auto; display: flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 12px; background: #8A4B2A; color: #FFFFFF; text-decoration: none; font-weight: 600">Choose Family</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px; padding: 32px; border-radius: 24px; background: #2A1D16; color: #F2EFEB">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #FFFFFF">Extended Family</h3><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: #2F5E66; color: #FFFFFF">2 trees</span></div>
+<p style="margin: 0; color: #CDBFB3; font-size: 14px">For your father's and mother's bani together</p>
+</div>
+<p style="margin: 0; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap"><span style="font-family: 'Fraunces', Georgia, serif; font-size: 44px; font-weight: 600; line-height: 1; color: #E9C9AE">Rp99rb</span><span style="color: #CDBFB3; font-size: 15px">/ year</span></p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #E8DDD3">
+<li>2 family trees</li>
+<li>Unlimited members</li>
+<li>Branches with unlimited generations</li>
+<li>150 album photos</li>
+<li>Excel export</li>
+</ul>
+<a href="#unduh" style="margin-top: auto; display: flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 12px; background: #F2EFEB; color: #2A1D16; text-decoration: none; font-weight: 600">Choose Extended Family</a>
+</div>
+</div>
+<p style="margin: 0; font-size: 15px; color: #6B5A4E">One-time add-ons: <strong style="color: #2A1D16">Open a Branch</strong> Rp15,000 (more generations for one contributor) and <strong style="color: #2A1D16">Photo Pack</strong> Rp15,000 (+30 album photos).</p>
+</div>
+</section>
+
+<!-- TESTIMONI -->
+<section style="background: #FBF9F6; border-top: 1px solid #E2D5C6; border-bottom: 1px solid #E2D5C6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px">
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.15">What families are saying</h2>
+<p style="margin: 0; font-size: 13px; color: #8A4B2A; font-weight: 600">[Sample, replace with beta tester quotes]</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<figure style="margin: 0; padding: 28px; border-radius: 20px; background: #F2EFEB; display: flex; flex-direction: column; gap: 20px">
+<blockquote style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 20px; line-height: 1.45">“Our family tree used to live only in Grandma’s head. Now the grandkids can see it on their own phones.”</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #4A3A30"><span style="width: 40px; height: 40px; border-radius: 50%; background: #C49A76; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700">R</span><span><strong style="display: block; color: #2A1D16">[Tester name]</strong>Family organizer, Kediri</span></figcaption>
+</figure>
+<figure style="margin: 0; padding: 28px; border-radius: 20px; background: #F2EFEB; display: flex; flex-direction: column; gap: 20px">
+<blockquote style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 20px; line-height: 1.45">“Tallying halal bihalal used to take two weeks in the group chat. This time we just checked attendance per branch.”</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #4A3A30"><span style="width: 40px; height: 40px; border-radius: 50%; background: #2F5E66; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700">S</span><span><strong style="display: block; color: #2A1D16">[Tester name]</strong>Reunion committee, Surabaya</span></figcaption>
+</figure>
+<figure style="margin: 0; padding: 28px; border-radius: 20px; background: #F2EFEB; display: flex; flex-direction: column; gap: 20px">
+<blockquote style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 20px; line-height: 1.45">“I only fill in my own family. Each cousin takes care of their own branch.”</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #4A3A30"><span style="width: 40px; height: 40px; border-radius: 50%; background: #8A4B2A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700">A</span><span><strong style="display: block; color: #2A1D16">[Tester name]</strong>Branch contributor, Malang</span></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div style="max-width: 860px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 32px">
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12">Frequently asked questions</h2>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #D9C7B5">
+<details style="border-bottom: 1px solid #D9C7B5; padding: 20px 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; font-weight: 600; min-height: 44px">Can people outside our family see our tree?<span class="faq-plus" aria-hidden="true" style="font-size: 26px; color: #8A4B2A; line-height: 1">+</span></summary>
+<p style="margin: 12px 0 0; color: #4A3A30">No. A tree is open only to people you invite. Phone numbers and addresses are stored separately and shown only to members of the tree.</p>
+</details>
+<details style="border-bottom: 1px solid #D9C7B5; padding: 20px 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; font-weight: 600; min-height: 44px">Our elders don’t use smartphones. What then?<span class="faq-plus" aria-hidden="true" style="font-size: 26px; color: #8A4B2A; line-height: 1">+</span></summary>
+<p style="margin: 12px 0 0; color: #4A3A30">No problem. Members don’t need an account. Their children or grandchildren can add their details and photos as branch contributors.</p>
+</details>
+<details style="border-bottom: 1px solid #D9C7B5; padding: 20px 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; font-weight: 600; min-height: 44px">What’s the difference between Contributor and View only?<span class="faq-plus" aria-hidden="true" style="font-size: 26px; color: #8A4B2A; line-height: 1">+</span></summary>
+<p style="margin: 12px 0 0; color: #4A3A30">Contributors can add and edit members in their branch, down to the generation limit you set. View only can open the tree, profiles, and events without changing anything.</p>
+</details>
+<details style="border-bottom: 1px solid #D9C7B5; padding: 20px 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; font-weight: 600; min-height: 44px">Our data is already in Excel. Can we use it?<span class="faq-plus" aria-hidden="true" style="font-size: 26px; color: #8A4B2A; line-height: 1">+</span></summary>
+<p style="margin: 12px 0 0; color: #4A3A30">Excel export is available for backups. Excel import is in the works; until then, our team can help move your data.</p>
+</details>
+<details style="border-bottom: 1px solid #D9C7B5; padding: 20px 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; font-weight: 600; min-height: 44px">How do I pay for a plan?<span class="faq-plus" aria-hidden="true" style="font-size: 26px; color: #8A4B2A; line-height: 1">+</span></summary>
+<p style="margin: 12px 0 0; color: #4A3A30">For now, plans are activated through the admin’s WhatsApp from the Profile menu. Paying directly through Google Play is coming soon.</p>
+</details>
+<details style="border-bottom: 1px solid #D9C7B5; padding: 20px 0">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; font-weight: 600; min-height: 44px">Is there an iPhone version?<span class="faq-plus" aria-hidden="true" style="font-size: 26px; color: #8A4B2A; line-height: 1">+</span></summary>
+<p style="margin: 12px 0 0; color: #4A3A30">The iOS version is in progress. For now, Bani is available on Android.</p>
+</details>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="unduh" style="padding: 0 24px 96px">
+<div style="max-width: 1152px; margin: 0 auto; border-radius: 32px; background: #2F5E66; color: #FFFFFF; padding: clamp(36px, 6vw, 72px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; position: relative; overflow: hidden">
+<svg aria-hidden="true" width="320" height="320" viewBox="0 0 64 64" style="position: absolute; right: -60px; bottom: -90px; opacity: 0.12"><g fill="#FFFFFF"><ellipse cx="32" cy="13" rx="5.5" ry="8.5"></ellipse><ellipse cx="32" cy="31" rx="5.5" ry="8.5"></ellipse><ellipse cx="23" cy="22" rx="8.5" ry="5.5"></ellipse><ellipse cx="41" cy="22" rx="8.5" ry="5.5"></ellipse></g></svg>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px; position: relative">
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; color: #FFFFFF">Record your family tree before the next reunion.</h2>
+<p style="margin: 0; font-size: 17px; color: #DCEBEC">Free for your first 50 members. No credit card needed.</p>
+</div>
+<a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.bani.bani" style="position: relative; display: inline-flex; align-items: center; gap: 12px; background: #8A4B2A; color: #FFFFFF; text-decoration: none; padding: 16px 26px; border-radius: 16px; font-weight: 600; font-size: 17px; min-height: 56px; box-sizing: border-box">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"></path></svg>
+Get it on Google Play</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid #E2D5C6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 14px; color: #6B5A4E">
+<span style="font-family: 'Fraunces', Georgia, serif; font-size: 18px; font-weight: 600; color: #2A1D16">Bani</span>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<a href="#faq" style="color: #6B5A4E">Privacy policy</a>
+<a href="#faq" style="color: #6B5A4E">Terms</a>
+<a href="#faq" style="color: #6B5A4E">Contact us</a>
+</div>
+<span>© 2026 Bani</span>
+</div>
+</footer>
+
+</div>
+<script>
+(function(){var d={lineage:['Lineage: grows downward','Read the line of descent top to bottom, like a list. No sideways scrolling, however many generations deep.','Lineage view'],focus:['Focus: one person and their family','Parents above, spouse in the middle, children below. Tap a name to shift the focus.','Focus view'],chart:['Chart: the full picture','A classic tree showing every branch at once, for example on the screen at a family event.','Chart view']};
+var bs=document.querySelectorAll('.mode-btn');bs.forEach(function(b){b.addEventListener('click',function(){var k=b.dataset.mode;bs.forEach(function(o){var on=o===b;o.setAttribute('aria-pressed',on);o.style.background=on?'#8A4B2A':'transparent';o.style.color=on?'#FFFFFF':'#4A3A30';});document.getElementById('mode-title').textContent=d[k][0];document.getElementById('mode-body').textContent=d[k][1];var im=document.getElementById('mode-img');im.src='img/'+k+'.webp';im.alt=d[k][2];});});})();
+</script>
+</body>
+</html>
