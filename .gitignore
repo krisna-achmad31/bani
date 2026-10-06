@@ -49,3 +49,6 @@ app.*.map.json
 *.apk
 *.aab
 node_modules/
+
+# Firebase deploy cache
+.firebase/
