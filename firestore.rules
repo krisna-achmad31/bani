@@ -1,0 +1,521 @@
+rules_version = '2';
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  BANI — Firestore Security Rules
+//
+//  Quota model (see PRD):
+//   • users/{uid}.memberLimit — set to config/app.defaultMemberLimit on first
+//     login; afterwards only the Super Admin (admins/{uid}) can change it.
+//   • A tree's quota is its owner's memberLimit. families/{id}.memberCount and
+//     lastMemberOp must change in the same batch as a member create/delete.
+//   • Contributors write only inside their branch (grant.anchorMemberId in the
+//     member's ancestors) and only down to grant.maxGeneration (absolute).
+//   • Free accounts get one tree whose id equals their uid.
+// ─────────────────────────────────────────────────────────────────────────────
+
+service cloud.firestore {
+  match /databases/{db}/documents {
+
+    // ── Basics ────────────────────────────────────────────────────────────────
+
+    function signedIn() { return request.auth != null; }
+    function uid() { return request.auth.uid; }
+    function doc(p) { return path('/databases/' + db + '/documents/' + p); }
+    function isSuperAdmin() { return signedIn() && exists(doc('admins/' + uid())); }
+
+    function changed() {
+      return request.resource.data.diff(resource.data).affectedKeys();
+    }
+    function onlyChanged(keys) { return changed().hasOnly(keys); }
+    function unchanged(keys) { return !changed().hasAny(keys); }
+
+    function defaultLimit() {
+      return exists(doc('config/app'))
+        ? get(doc('config/app')).data.get('defaultMemberLimit', 50)
+        : 50;
+    }
+
+    // ── Families / roles ──────────────────────────────────────────────────────
+
+    function famPath(fid) { return doc('families/' + fid); }
+    function famBefore(fid) { return get(famPath(fid)).data; }
+    function famAfter(fid) { return getAfter(famPath(fid)).data; }
+    function roleBefore(fid) { return famBefore(fid).roles.get(uid(), null); }
+    function roleAfter(fid) { return famAfter(fid).roles.get(uid(), null); }
+
+    function isMemberOf(fid) {
+      return signedIn() && (isSuperAdmin() || roleBefore(fid) != null);
+    }
+    function isManager(fid) {
+      return signedIn() && (isSuperAdmin() || roleBefore(fid) in ['owner', 'admin']);
+    }
+
+    function grantPath(fid, u) { return doc('families/' + fid + '/grants/' + u); }
+    function myGrant(fid) { return get(grantPath(fid, uid())).data; }
+    function hasGrant(fid) { return exists(grantPath(fid, uid())); }
+
+    function memberPath(fid, mid) { return doc('families/' + fid + '/members/' + mid); }
+
+    // ── Plans: free | keluarga | keluarga_besar (legacy 'premium' = keluarga_besar)
+
+    function cfgApp() {
+      return exists(doc('config/app')) ? get(doc('config/app')).data : {};
+    }
+
+    function planOf(u) {
+      let d = get(doc('users/' + u)).data;
+      let active = d.get('planUntil', null) == null || d.planUntil > request.time;
+      let p = d.get('plan', 'free');
+      return !active ? 'free' : (p == 'premium' ? 'keluarga_besar' : p);
+    }
+
+    function isPaidUser(u) { return planOf(u) in ['keluarga', 'keluarga_besar']; }
+
+    // A limit from config/app.plans.<plan>.<field>, with built-in defaults.
+    function planLimit(plan, field) {
+      let defaults = {
+        'free': {'trees': 1, 'album': 6, 'uploadsPerDay': 10},
+        'keluarga': {'trees': 1, 'album': 60, 'uploadsPerDay': 50},
+        'keluarga_besar': {'trees': 2, 'album': 150, 'uploadsPerDay': 50}
+      };
+      let fallback = defaults.get(plan, defaults['free']).get(field, 0);
+      return cfgApp().get('plans', {}).get(plan, {}).get(field, fallback);
+    }
+
+    // Members & branch depth: unlimited for paid owners and Super Admin owners.
+    function ownerUnlimited(ownerId) {
+      return exists(doc('admins/' + ownerId)) || isPaidUser(ownerId);
+    }
+
+    function withinQuota(fid) {
+      let fam = famAfter(fid);
+      return ownerUnlimited(fam.ownerId)
+        || fam.memberCount <= get(doc('users/' + fam.ownerId)).data.memberLimit;
+    }
+
+    // memberCount may only move by one, paired with the member it counts.
+    function counterOk(fid) {
+      let before = resource.data.memberCount;
+      let after = request.resource.data.memberCount;
+      let mpath = memberPath(fid, request.resource.data.get('lastMemberOp', '-'));
+      return after == before
+        || (after == before + 1 && !exists(mpath) && existsAfter(mpath))
+        || (after == before - 1 && exists(mpath) && !existsAfter(mpath));
+    }
+
+    // Album photos: albumCount moves by one, paired with the photo it counts.
+    // lastAlbumOp = '<memberId>/album/<photoId>'.
+    function albumCounterOk(fid) {
+      let before = resource.data.get('albumCount', 0);
+      let after = request.resource.data.get('albumCount', 0);
+      let apath = doc('families/' + fid + '/members/'
+        + request.resource.data.get('lastAlbumOp', '-/album/-'));
+      return after == before
+        || (after == before + 1 && !exists(apath) && existsAfter(apath))
+        || (after == before - 1 && exists(apath) && !existsAfter(apath));
+    }
+
+    // Album per tree = plan album + users/{owner}.albumBonus (Paket Foto +30).
+    // Free trees also need config/app.minMembersForAlbum members first.
+    // Super Admin owners are unlimited.
+    function withinAlbumQuota(fid) {
+      let fam = famAfter(fid);
+      let owner = get(doc('users/' + fam.ownerId)).data;
+      let plan = planOf(fam.ownerId);
+      return exists(doc('admins/' + fam.ownerId))
+        || (fam.get('albumCount', 0) <= planLimit(plan, 'album') + owner.get('albumBonus', 0)
+            && (plan != 'free' || fam.memberCount >= cfgApp().get('minMembersForAlbum', 5)));
+    }
+
+    // Uploader's per-day counter (users/{uid}.uploadDay/uploadCount), written
+    // in the same batch as the photo.
+    function uploadCountOk() {
+      let before = get(doc('users/' + uid())).data;
+      let after = getAfter(doc('users/' + uid())).data;
+      let today = request.time.date();
+      let expected = before.get('uploadDay', null) == today ? before.get('uploadCount', 0) + 1 : 1;
+      return isSuperAdmin()
+        || (after.get('uploadDay', null) == today
+            && after.get('uploadCount', 0) == expected
+            && after.get('uploadCount', 0) <= planLimit(planOf(uid()), 'uploadsPerDay'));
+    }
+
+    // ── Member permissions ────────────────────────────────────────────────────
+
+    // [m] is the member's data, [mid] its id; role is read after the write so
+    // a family + root member can be created in one batch.
+    function canEditMember(fid, mid, m) {
+      let role = roleAfter(fid);
+      return isSuperAdmin()
+        || role in ['owner', 'admin']
+        || (role == 'contributor' && hasGrant(fid)
+            && (myGrant(fid).anchorMemberId == mid
+                || myGrant(fid).anchorMemberId in m.ancestors))
+        || (role in ['contributor', 'admin'] && m.get('claimedByUid', null) == uid());
+    }
+
+    // Checked against the parent as it will be after this batch, so moving a
+    // whole subtree (parent first, then descendants) validates at every level.
+    function validStructure(fid, m) {
+      return m.parentId == null
+        ? (m.generation == 1 && m.ancestors.size() == 0)
+        : (m.generation == getAfter(memberPath(fid, m.parentId)).data.generation + 1
+           && m.ancestors == getAfter(memberPath(fid, m.parentId)).data.ancestors.concat([m.parentId]));
+    }
+
+    function canCreateMember(fid, mid) {
+      let m = request.resource.data;
+      let role = roleAfter(fid);
+      let isContributorInBranch = role == 'contributor' && hasGrant(fid)
+        && myGrant(fid).anchorMemberId in m.ancestors
+        && (myGrant(fid).maxGeneration == null
+            || m.generation <= myGrant(fid).maxGeneration
+            || ownerUnlimited(famAfter(fid).ownerId));
+      let prevCount = exists(famPath(fid)) ? famBefore(fid).memberCount : 0;
+      return validStructure(fid, m)
+        && m.createdBy == uid()
+        && (m.claimedByUid == null || (m.parentId == null && m.claimedByUid == uid()))
+        && (m.parentId != null || isSuperAdmin() || role in ['owner', 'admin'])
+        && (isSuperAdmin() || role in ['owner', 'admin'] || isContributorInBranch)
+        && famAfter(fid).lastMemberOp == mid
+        && famAfter(fid).memberCount == prevCount + 1
+        && withinQuota(fid)
+        && (m.get('photoThumb', null) == null || m.photoThumb.size() < 40000);
+    }
+
+    // ── Users / config ────────────────────────────────────────────────────────
+
+    match /users/{userId} {
+      allow read: if signedIn() && (uid() == userId || isSuperAdmin());
+      allow create: if signedIn() && uid() == userId
+        && request.resource.data.memberLimit == defaultLimit()
+        && request.resource.data.plan == 'free'
+        && request.resource.data.planUntil == null;
+      allow update: if isSuperAdmin()
+        || (signedIn() && uid() == userId
+            && onlyChanged(['displayName', 'photoUrl', 'email', 'lastLoginAt']))
+        // Upload counter: only today's date, only +1 (or 1 on a new day), so
+        // it can never be reset to squeeze in more uploads.
+        || (signedIn() && uid() == userId
+            && onlyChanged(['uploadDay', 'uploadCount'])
+            && request.resource.data.uploadDay == request.time.date()
+            && request.resource.data.uploadCount
+               == (resource.data.get('uploadDay', null) == request.time.date()
+                   ? resource.data.get('uploadCount', 0) + 1
+                   : 1));
+      allow delete: if isSuperAdmin();
+    }
+
+    // One free tree per phone: the first account to claim a device hash owns
+    // it; a free tree must carry a hash claimed by its owner.
+    match /devices/{hash} {
+      allow get: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.uid == uid()
+        && request.resource.data.keys().hasOnly(['uid', 'createdAt']);
+      allow update, delete: if isSuperAdmin();
+    }
+
+    // The app owner's verified Google account may register itself once;
+    // everyone else can only be added from the Console.
+    match /admins/{userId} {
+      allow read: if signedIn() && uid() == userId;
+      allow create: if signedIn() && uid() == userId
+        && request.auth.token.email == 'achmad.yukrisna@gmail.com'
+        && request.auth.token.email_verified == true;
+      allow update, delete: if false;
+    }
+
+    match /config/{docId} {
+      allow read: if signedIn();
+      allow write: if isSuperAdmin();
+    }
+
+    // ── Feedback (Kirim saran) ────────────────────────────────────────────────
+
+    match /feedback/{id} {
+      allow create: if signedIn()
+        && request.resource.data.uid == uid()
+        && request.resource.data.status == 'new'
+        && request.resource.data.message is string
+        && request.resource.data.message.size() >= 5
+        && request.resource.data.message.size() <= 2000;
+      allow read: if isSuperAdmin();
+      allow update: if isSuperAdmin() && onlyChanged(['status']);
+      allow delete: if isSuperAdmin();
+    }
+
+    // ── Legacy data (old famtree app) — read-only until migrated ─────────────
+
+    match /mungin/{document=**} {
+      allow read: if signedIn();
+      allow write: if false;
+    }
+
+    // ── Invites (top-level, id = secret token) ───────────────────────────────
+
+    match /invites/{token} {
+      allow get: if signedIn();
+      allow list: if signedIn() && isManager(resource.data.familyId);
+      allow create: if signedIn()
+        && isManager(request.resource.data.familyId)
+        && request.resource.data.createdByUid == uid()
+        && request.resource.data.role in ['admin', 'contributor', 'viewer']
+        && request.resource.data.usedBy == null
+        && exists(memberPath(request.resource.data.familyId, request.resource.data.memberId))
+        && (request.resource.data.role != 'admin'
+            || famBefore(request.resource.data.familyId).ownerId == uid()
+            || isSuperAdmin());
+      allow update: if signedIn()
+        && resource.data.usedBy == null
+        && resource.data.expiresAt > request.time
+        && onlyChanged(['usedBy', 'usedAt'])
+        && request.resource.data.usedBy == uid()
+        && existsAfter(grantPath(resource.data.familyId, uid()));
+      allow delete: if signedIn() && isManager(resource.data.familyId);
+    }
+
+    // ── Families ──────────────────────────────────────────────────────────────
+
+    match /families/{fid} {
+      // resource == null lets the app check whether the free tree exists yet.
+      allow read: if signedIn()
+        && (resource == null || uid() in resource.data.memberUids || isSuperAdmin());
+
+      // Super Admin may bulk-create (legacy import) without the counter dance.
+      // Tree ids: 1st = uid (a free one needs this phone's device claim), 2nd =
+      // uid_2 for plans with trees >= 2 (Keluarga Besar).
+      allow create: if isSuperAdmin() || signedIn()
+        && ((fid == uid()
+              && (isPaidUser(uid())
+                  || (request.resource.data.get('deviceHash', null) is string
+                      && get(doc('devices/' + request.resource.data.deviceHash)).data.uid
+                           == uid())))
+            || (fid == uid() + '_2' && planLimit(planOf(uid()), 'trees') >= 2))
+        && request.resource.data.ownerId == uid()
+        && request.resource.data.roles.keys().hasOnly([uid()])
+        && request.resource.data.roles[uid()] == 'owner'
+        && request.resource.data.memberUids == [uid()]
+        && request.resource.data.memberCount == 1
+        && existsAfter(memberPath(fid, request.resource.data.lastMemberOp));
+
+      allow update: if signedIn() && (
+        isSuperAdmin()
+        // Owner/Admin: anything except ownership; the owner stays owner.
+        || (isManager(fid)
+            && unchanged(['ownerId'])
+            && request.resource.data.roles.get(resource.data.ownerId, null) == 'owner'
+            && counterOk(fid)
+            && albumCounterOk(fid))
+        // Contributors: member/album counters + timestamp only.
+        || (isMemberOf(fid)
+            && onlyChanged(['memberCount', 'lastMemberOp', 'albumCount', 'lastAlbumOp',
+                            'updatedAt'])
+            && counterOk(fid)
+            && albumCounterOk(fid))
+        // Claiming an invite: add exactly yourself with the granted role.
+        || (resource.data.roles.get(uid(), null) == null
+            && onlyChanged(['roles', 'memberUids', 'updatedAt'])
+            && request.resource.data.roles.diff(resource.data.roles).affectedKeys().hasOnly([uid()])
+            && existsAfter(grantPath(fid, uid()))
+            && request.resource.data.roles[uid()] == getAfter(grantPath(fid, uid())).data.role
+            && request.resource.data.memberUids.toSet()
+                 == resource.data.memberUids.toSet().union([uid()].toSet()))
+      );
+
+      allow delete: if isSuperAdmin();
+
+      // ── Grants ─────────────────────────────────────────────────────────────
+
+      match /grants/{gid} {
+        allow read: if signedIn() && (gid == uid() || isMemberOf(fid));
+
+        allow create: if isSuperAdmin() || signedIn() && gid == uid() && (
+          // Owner grant, written together with a new family.
+          (!exists(famPath(fid))
+            && request.resource.data.role == 'owner'
+            && famAfter(fid).ownerId == uid())
+          // Claim: must match an unused invite that this batch marks as used.
+          || (request.resource.data.inviteToken is string
+            && inviteMatches(fid, request.resource.data))
+        );
+
+        allow update: if isSuperAdmin()
+          || (isManager(fid)
+              && resource.data.role != 'owner'
+              && onlyChanged(['role'])
+              && request.resource.data.role in ['admin', 'contributor', 'viewer'])
+          // After a move: shift maxGeneration so the branch depth stays the same.
+          || (isManager(fid)
+              && onlyChanged(['maxGeneration'])
+              && resource.data.maxGeneration != null
+              && request.resource.data.maxGeneration
+                   - getAfter(memberPath(fid, resource.data.anchorMemberId)).data.generation
+                 == resource.data.maxGeneration
+                   - get(memberPath(fid, resource.data.anchorMemberId)).data.generation);
+
+        allow delete: if isSuperAdmin()
+          || (isManager(fid) && resource.data.role != 'owner');
+      }
+
+      // ── Events (Acara keluarga) ────────────────────────────────────────────
+      // Owner/Admin/Contributor organise; everyone in the tree reads and
+      // answers. Only the organizer or a manager edits, deletes or confirms
+      // dues. Bani only records payments; money goes to the family treasurer.
+
+      function eventValid(e) {
+        return e.title is string && e.title.size() >= 1 && e.title.size() <= 120
+          && e.type in ['reunion', 'halalBihalal', 'holiday', 'arisan', 'haul', 'other']
+          && e.startAt is timestamp
+          && e.duesAmount is int && e.duesAmount >= 0 && e.duesAmount <= 100000000
+          && e.agenda is list && e.agenda.size() <= 30
+          && (e.get('notes', null) == null || e.notes.size() <= 2000);
+      }
+
+      function eventOrganizer(fid, eid) {
+        return get(doc('families/' + fid + '/events/' + eid)).data.createdBy == uid();
+      }
+
+      match /events/{eid} {
+        allow read: if isMemberOf(fid);
+        allow create: if signedIn()
+          && (isSuperAdmin() || roleBefore(fid) in ['owner', 'admin', 'contributor'])
+          && request.resource.data.createdBy == uid()
+          && eventValid(request.resource.data);
+        allow update: if signedIn()
+          && (resource.data.createdBy == uid() || isManager(fid))
+          && unchanged(['createdBy', 'createdByName', 'createdAt'])
+          && eventValid(request.resource.data);
+        allow delete: if signedIn() && (resource.data.createdBy == uid() || isManager(fid));
+
+        match /rsvps/{rid} {
+          allow read: if isMemberOf(fid);
+          allow create: if isMemberOf(fid) && rid == uid()
+            && request.resource.data.status in ['going', 'maybe', 'no']
+            && request.resource.data.people is int
+            && request.resource.data.people >= 1 && request.resource.data.people <= 30
+            && request.resource.data.paid == false;
+          allow update: if signedIn() && (
+            (rid == uid() && isMemberOf(fid)
+              && unchanged(['paid'])
+              && request.resource.data.status in ['going', 'maybe', 'no']
+              && request.resource.data.people is int
+              && request.resource.data.people >= 1 && request.resource.data.people <= 30)
+            || ((eventOrganizer(fid, eid) || isManager(fid))
+              && onlyChanged(['paid', 'paidClaimed', 'updatedAt']))
+          );
+          allow delete: if signedIn()
+            && (rid == uid() || eventOrganizer(fid, eid) || isManager(fid));
+        }
+      }
+
+      // ── Members ────────────────────────────────────────────────────────────
+
+      match /members/{mid} {
+        allow read: if isMemberOf(fid);
+
+        allow create: if isSuperAdmin() || (signedIn() && canCreateMember(fid, mid));
+
+        allow update: if signedIn() && (
+          (canEditMember(fid, mid, resource.data)
+            && unchanged(['parentId', 'generation', 'ancestors', 'claimedByUid',
+                          'createdBy', 'createdAt'])
+            // Optimistic lock: a save based on a stale copy is rejected.
+            && request.resource.data.get('version', 0) == resource.data.get('version', 0) + 1
+            && (request.resource.data.get('photoThumb', null) == null
+                || request.resource.data.photoThumb.size() < 40000))
+          // Claim via invite (see grants rule).
+          || (onlyChanged(['claimedByUid', 'updatedAt'])
+            && resource.data.get('claimedByUid', null) == null
+            && request.resource.data.claimedByUid == uid()
+            && !exists(grantPath(fid, uid()))
+            && getAfter(grantPath(fid, uid())).data.anchorMemberId == mid)
+          // Owner/Admin moving a member (and its subtree) to another parent.
+          || ((isSuperAdmin() || roleBefore(fid) in ['owner', 'admin'])
+            && resource.data.parentId != null
+            && request.resource.data.parentId != null
+            && onlyChanged(['parentId', 'generation', 'ancestors', 'birthOrder', 'updatedAt'])
+            && !(mid in request.resource.data.ancestors)
+            && validStructure(fid, request.resource.data))
+        );
+
+        allow delete: if signedIn()
+          && resource.data.parentId != null
+          && (isSuperAdmin()
+              || roleBefore(fid) in ['owner', 'admin']
+              || (roleBefore(fid) == 'contributor'
+                  && resource.data.createdBy == uid()
+                  && canEditMember(fid, mid, resource.data)))
+          && famAfter(fid).lastMemberOp == mid
+          && famAfter(fid).memberCount == famBefore(fid).memberCount - 1;
+
+        // Album of old photos — thumbnail here, ~1280px photo in full/data.
+        match /album/{pid} {
+          allow read: if isMemberOf(fid);
+          allow create: if signedIn()
+            && canEditMember(fid, mid, get(memberPath(fid, mid)).data)
+            && request.resource.data.uploadedBy == uid()
+            && request.resource.data.thumb is string
+            && request.resource.data.thumb.size() < 80000
+            && famAfter(fid).get('lastAlbumOp', '') == mid + '/album/' + pid
+            && famAfter(fid).get('albumCount', 0) == famBefore(fid).get('albumCount', 0) + 1
+            && withinAlbumQuota(fid)
+            && uploadCountOk();
+          allow update: if signedIn()
+            && canEditMember(fid, mid, get(memberPath(fid, mid)).data)
+            && onlyChanged(['caption', 'year']);
+          allow delete: if signedIn()
+            && canEditMember(fid, mid, get(memberPath(fid, mid)).data)
+            && famAfter(fid).get('lastAlbumOp', '') == mid + '/album/' + pid
+            && famAfter(fid).get('albumCount', 0) == famBefore(fid).get('albumCount', 0) - 1;
+
+          match /full/{docId} {
+            allow read: if isMemberOf(fid);
+            allow write: if signedIn()
+              && canEditMember(fid, mid, get(memberPath(fid, mid)).data)
+              && (request.resource == null || request.resource.data.data.size() < 1000000);
+          }
+        }
+
+        // Large photo (base64) — same writers as the member.
+        match /media/{docId} {
+          allow read: if isMemberOf(fid);
+          allow write: if signedIn()
+            && canEditMember(fid, mid, memberForSub(fid, mid))
+            && (request.resource == null || request.resource.data.data.size() < 400000);
+        }
+
+        // Contact — hidden from ordinary members when visibility == 'admins'.
+        match /private/{docId} {
+          allow read: if isMemberOf(fid)
+            && (resource == null
+                || resource.data.visibility == 'family'
+                || isManager(fid)
+                || get(memberPath(fid, mid)).data.get('claimedByUid', null) == uid());
+          allow write: if signedIn()
+            && canEditMember(fid, mid, memberForSub(fid, mid));
+        }
+      }
+    }
+
+    // Member data for subcollection writes: after the batch when it still
+    // exists (create/update), before it otherwise (delete).
+    function memberForSub(fid, mid) {
+      return existsAfter(memberPath(fid, mid))
+        ? getAfter(memberPath(fid, mid)).data
+        : get(memberPath(fid, mid)).data;
+    }
+
+    function inviteMatches(fid, g) {
+      let inv = get(doc('invites/' + g.inviteToken)).data;
+      let anchor = get(memberPath(fid, inv.memberId)).data;
+      return inv.familyId == fid
+        && inv.usedBy == null
+        && inv.expiresAt > request.time
+        && getAfter(doc('invites/' + g.inviteToken)).data.usedBy == uid()
+        && g.role == inv.role
+        && g.anchorMemberId == inv.memberId
+        && g.maxGeneration == (inv.maxDepth == null ? null : anchor.generation + inv.maxDepth);
+    }
+  }
+}

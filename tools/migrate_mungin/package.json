@@ -1,0 +1,11 @@
+{
+  "name": "bani-migrate-mungin",
+  "private": true,
+  "description": "One-off migration of the legacy nested `mungin` collection into families/{id}/members",
+  "scripts": {
+    "dry-run": "node migrate.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  }
+}

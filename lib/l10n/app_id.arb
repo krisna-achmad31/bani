@@ -1,0 +1,1225 @@
+{
+  "@@locale": "id",
+  "appName": "Bani",
+  "cancel": "Batal",
+  "save": "Simpan",
+  "open": "Buka",
+  "create": "Buat",
+  "delete": "Hapus",
+  "edit": "Edit",
+  "retry": "Coba lagi",
+  "later": "Nanti saja",
+  "saving": "Menyimpan...",
+  "loadFailed": "Gagal memuat",
+  "notFound": "Data tidak ditemukan",
+  "copied": "Disalin.",
+  "generation": "Generasi {n}",
+  "@generation": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "membersCount": "{n} anggota",
+  "@membersCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "generationsCount": "{n} generasi",
+  "@generationsCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "peopleCount": "{n} orang",
+  "@peopleCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "childOf": "anak {name}",
+  "@childOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "someoneElse": "anggota lain",
+  "tabHome": "Beranda",
+  "tabTree": "Pohon",
+  "tabInvite": "Undang",
+  "tabProfile": "Profil",
+  "exitTitle": "Keluar dari Bani?",
+  "exitBody": "Kamu bisa kembali kapan saja. Data tetap tersimpan.",
+  "exitConfirm": "Keluar",
+  "loginSlide1Title": "Silsilah bani yang tumbuh ke bawah, enak dibaca di HP.",
+  "loginSlide1Body": "Tiap cabang mengisi keluarganya sendiri, lalu kumpul lagi lewat reuni, halal bihalal, atau liburan bareng.",
+  "loginSlide2Title": "Undang saudara lewat WhatsApp.",
+  "loginSlide2Body": "Kirim kode, saudara masuk dengan Google, lalu mengisi cabangnya sendiri.",
+  "loginSlide3Title": "Kontak dan makam, satu ketukan.",
+  "loginSlide3Body": "Buka WhatsApp, telepon, atau lokasi di Google Maps langsung dari profil anggota.",
+  "loginPendingInvite": "Masuk untuk membuka undangan",
+  "loginWithGoogle": "Masuk dengan Google",
+  "loginTerms": "Dengan masuk, kamu menyetujui Ketentuan dan Kebijakan Privasi Bani.",
+  "previewChild": "Anak",
+  "loginCancelled": "Login dibatalkan.",
+  "loginNoToken": "Google tidak mengirim token. Cek konfigurasi Firebase.",
+  "loginFailed": "Login gagal: {reason}",
+  "@loginFailed": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteTitle": "Undangan",
+  "inviteClaimed": "Berhasil! Sekarang kamu bisa mengisi cabangmu.",
+  "inviteCannotOpen": "Undangan tidak bisa dibuka",
+  "inviteToHome": "Ke beranda",
+  "inviteNotFound": "Undangan tidak ditemukan",
+  "inviteInvalid": "Undangan tidak berlaku",
+  "inviteUsed": "Kode ini sudah dipakai. Minta kode baru ke pengirim.",
+  "inviteExpired": "Kode ini sudah kedaluwarsa atau dibatalkan. Minta kode baru ke pengirim.",
+  "inviteCanEditSelf": "Melengkapi data dan foto dirimu",
+  "inviteCanAddKids": "Menambah anak dan cucu",
+  "inviteCanAddKidsUntil": "Menambah anak dan cucu, sampai generasi {n}",
+  "@inviteCanAddKidsUntil": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteCanManage": "Mengelola seluruh pohon",
+  "inviteCanView": "Melihat seluruh pohon {family}",
+  "@inviteCanView": {
+    "placeholders": {
+      "family": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteFrom": "{name} mengundangmu mengisi cabang di {family}.",
+  "@inviteFrom": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "family": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteIsThisYou": "Apakah ini kamu?",
+  "inviteAfterClaim": "Setelah klaim, kamu bisa",
+  "inviteYesMe": "Ya, ini saya",
+  "inviteNotMe": "Bukan saya",
+  "inviteAlreadyUsed": "Undangan sudah dipakai atau kedaluwarsa.",
+  "inviteAlreadyJoined": "Akunmu sudah terhubung ke pohon ini.",
+  "roleOwner": "Owner",
+  "roleAdmin": "Admin",
+  "roleContributor": "Kontributor",
+  "roleViewer": "Hanya lihat",
+  "genderMale": "Laki-laki",
+  "genderFemale": "Perempuan",
+  "spouseMarried": "Menikah",
+  "spouseDivorced": "Cerai",
+  "spouseDeceased": "Wafat",
+  "alive": "Hidup",
+  "deceased": "Wafat",
+  "deceasedShort": "wafat",
+  "homeGreeting": "Assalamu'alaikum, {name}",
+  "@homeGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeTitle": "Keluarga saya",
+  "homeSetupFailed": "Gagal menyiapkan akun",
+  "homeTrees": "Pohon keluarga",
+  "homeNewTree": "Buat pohon baru",
+  "homeHaveCode": "Punya kode undangan?",
+  "homeWelcomeTitle": "Selamat datang di Bani",
+  "homeWelcomeBody": "Diundang keluarga? Pilih \"Punya kode undangan?\" lalu masukkan kodenya. Ingin mencatat silsilah sendiri? Pilih \"Buat pohon baru\".",
+  "enterCodeTitle": "Masukkan kode undangan",
+  "enterCodeBody": "Minta kode 8 huruf dari keluarga yang mengundangmu, atau tempel link-nya.",
+  "newTreeTitle": "Pohon baru",
+  "newTreeName": "Nama bani, contoh: Bani Harun",
+  "newTreeRoot": "Nama leluhur utama",
+  "quotaTitle": "Kuota anggota",
+  "quotaUnlimited": "/ tanpa batas",
+  "quotaAdd": "Tambah kuota",
+  "quotaSuperAdmin": "Super Admin · semua pohon tanpa batas",
+  "quotaPremium": "Premium aktif",
+  "quotaLeft": "{n} slot tersisa untuk pohon milikmu",
+  "@quotaLeft": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "treeOnlyOwnBranch": "Kamu hanya bisa menambah anak di cabangmu sendiri.",
+  "treeEmptyTitle": "Belum ada pohon",
+  "treeEmptyBody": "Buat pohon baru di Beranda atau masukkan kode undangan dari keluargamu.",
+  "treeSearch": "Cari anggota",
+  "treeExport": "Ekspor ke Excel",
+  "treeRename": "Ganti nama pohon",
+  "treeRenameTitle": "Nama pohon",
+  "treeFilterAll": "Semua",
+  "treeFilterMine": "Cabang saya",
+  "treeGoToMe": "Ke saya",
+  "treeAddChild": "Tambah anak",
+  "treeViewDetail": "Lihat detail",
+  "treeEditData": "Edit data",
+  "treeMove": "Pindahkan ke orang tua lain",
+  "treeMe": "Saya",
+  "searchName": "Cari nama",
+  "detailNotFound": "Anggota tidak ditemukan",
+  "detailChildOrder": "Anak ke-{n} dari {parent}",
+  "@detailChildOrder": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "parent": {
+        "type": "String"
+      }
+    }
+  },
+  "detailChildOf": "Anak dari {parent}",
+  "@detailChildOf": {
+    "placeholders": {
+      "parent": {
+        "type": "String"
+      }
+    }
+  },
+  "detailAliveAge": "Hidup · {n} tahun",
+  "@detailAliveAge": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "detailDeceasedAge": "Wafat · usia {n} tahun",
+  "@detailDeceasedAge": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "detailLastEdit": "Terakhir diubah oleh {name} · {date}",
+  "@detailLastEdit": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "detailChildren": "Anak ({n})",
+  "@detailChildren": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "detailNoChildren": "Belum ada anak yang dicatat.",
+  "detailDeleteKidsFirst": "Hapus anak-anaknya dulu sebelum menghapus {name}.",
+  "@detailDeleteKidsFirst": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "detailDeleteTitle": "Hapus {name}?",
+  "@detailDeleteTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "detailDeleteBody": "Data, foto, dan kontaknya akan dihapus dari pohon.",
+  "detailWhatsapp": "WhatsApp",
+  "detailCall": "Telepon",
+  "detailOpenMaps": "Buka Maps",
+  "detailGrave": "Makam",
+  "detailBorn": "Lahir",
+  "detailDied": "Wafat",
+  "detailAddress": "Alamat",
+  "detailSpouse": "Pasangan",
+  "detailGender": "Jenis kelamin",
+  "detailOccupation": "Pekerjaan",
+  "detailNotes": "Catatan",
+  "detailOpenInMaps": "Buka di Maps",
+  "detailContactHidden": "Kontak belum diisi atau privat",
+  "detailUnclaimed": "Profil belum diklaim",
+  "detailUnclaimedBody": "Undang {name} atau anaknya untuk mengisi cabang ini sendiri.",
+  "@detailUnclaimedBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "detailInvite": "Undang",
+  "waGreeting": "Assalamu'alaikum {name}",
+  "@waGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "formStepIdentity": "Identitas",
+  "formStepBirth": "Lahir",
+  "formStepSpouse": "Pasangan",
+  "formStepContact": "Kontak",
+  "formNextBirth": "Lanjut: Lahir & wafat",
+  "formNextSpouse": "Lanjut: Pasangan",
+  "formNextContact": "Lanjut: Kontak",
+  "formEditTitle": "Edit data",
+  "formAddTitle": "Tambah anak",
+  "formChildOf": "Anak dari {parent} · Generasi {n}",
+  "@formChildOf": {
+    "placeholders": {
+      "parent": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "formRoot": "Leluhur utama · Generasi {n}",
+  "@formRoot": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "formChangedBy": "Baru saja diubah oleh {name}.",
+  "@formChangedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "formReload": "Muat",
+  "formQuotaUse": "Memakai 1 dari {n} slot anggota yang tersisa",
+  "@formQuotaUse": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "formNameRequired": "Nama lengkap wajib diisi.",
+  "formSaveChanges": "Simpan perubahan",
+  "formSaveMember": "Simpan anggota",
+  "formAddPhoto": "Tambah foto",
+  "formChangePhoto": "Ganti foto",
+  "formPhotoHint": "Dari kamera atau galeri. Dikompres otomatis supaya ringan.",
+  "formFullName": "Nama lengkap",
+  "formFullNameHint": "Contoh: Hasan Basri",
+  "formNickname": "Nama panggilan",
+  "formNicknameHint": "Contoh: Pak Hasan",
+  "formGender": "Jenis kelamin",
+  "formBirthOrder": "Anak ke-",
+  "formOccupation": "Pekerjaan",
+  "formOccupationHint": "Contoh: Guru",
+  "formCamera": "Kamera",
+  "formGallery": "Galeri",
+  "formRemovePhoto": "Hapus foto",
+  "formBirthPlace": "Tempat lahir",
+  "formBirthPlaceHint": "Contoh: Kediri",
+  "formBirthDate": "Tanggal lahir",
+  "formYearOnlyKnown": "Hanya tahun yang diketahui",
+  "formStatus": "Status",
+  "formDeathDate": "Tanggal wafat",
+  "formYearOnly": "Hanya tahun",
+  "formGrave": "Lokasi makam",
+  "formGravePick": "Pilih lokasi makam di peta",
+  "formGraveHint": "Lokasi makam membantu keluarga saat ziarah dan haul.",
+  "formSpouseIntro": "Tambahkan istri atau suami. Bisa lebih dari satu, misalnya jika menikah lagi.",
+  "formSpouseN": "Pasangan {n}",
+  "@formSpouseN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "formName": "Nama",
+  "formSpouseNameHint": "Nama lengkap pasangan",
+  "formAddSpouse": "Tambah pasangan",
+  "formWhatsapp": "Nomor WhatsApp",
+  "formHomeAddress": "Alamat rumah",
+  "formAddressPick": "Pilih alamat di peta",
+  "formAddressDetail": "Detail: RT/RW, patokan",
+  "formWhoSeesContact": "Siapa yang bisa melihat kontak?",
+  "formVisibilityFamily": "Semua anggota pohon",
+  "formVisibilityFamilyHint": "Keluarga bisa langsung WhatsApp",
+  "formVisibilityAdmins": "Hanya Owner & Admin",
+  "formVisibilityAdminsHint": "Lebih privat",
+  "formNotes": "Catatan (opsional)",
+  "formNotesHint": "Kisah singkat, pesan, atau kenangan",
+  "formConflictTitle": "Ada perubahan baru",
+  "formConflictBody": "{message}\n\nMuat data terbaru (perubahanmu dibuang), atau tetap simpan hanya bagian yang kamu ubah di atas data terbaru?",
+  "@formConflictBody": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "formLoadLatest": "Muat terbaru",
+  "formKeepMine": "Tetap simpan",
+  "formPickDate": "Pilih tanggal",
+  "formTapToOpenMap": "Ketuk untuk membuka peta",
+  "formChangeOnMap": "Ubah di peta",
+  "mapSelected": "Lokasi terpilih",
+  "mapNotFound": "Alamat tidak ditemukan.",
+  "mapPermissionDenied": "Izin lokasi ditolak.",
+  "mapNoGps": "Lokasi tidak bisa didapat. Pastikan GPS aktif.",
+  "mapSearch": "Cari alamat atau tempat",
+  "mapMyLocation": "Lokasi saya",
+  "mapResolving": "Mencari alamat...",
+  "mapDrag": "Geser peta",
+  "mapDetailHint": "Detail: RT/RW, patokan, warna pagar",
+  "mapUse": "Pakai lokasi ini",
+  "mapTitleDefault": "Pilih lokasi",
+  "invPageTitle": "Undang keluarga",
+  "invPageBody": "Kontributor mengisi cabangnya sendiri, sampai {n} generasi di bawahnya.",
+  "@invPageBody": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "invOnlyManagers": "Hanya Owner atau Admin yang bisa mengundang. Minta mereka mengirim kode untukmu atau saudaramu.",
+  "invForWho": "Untuk siapa?",
+  "invPickMember": "Pilih anggota",
+  "invPickMemberHint": "Orang yang akan mengisi cabangnya",
+  "invClaimed": "sudah diklaim",
+  "invUnclaimed": "belum diklaim",
+  "invContributorDepth": "Bisa mengisi {n} generasi di bawahnya · kode berlaku {days} hari",
+  "@invContributorDepth": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "invContributorUntil": "Bisa mengisi sampai generasi {n} · kode berlaku {days} hari",
+  "@invContributorUntil": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "invAdminHint": "Admin bisa mengedit seluruh pohon dan mengundang",
+  "invViewerHint": "Hanya bisa melihat pohon",
+  "invCreating": "Membuat kode...",
+  "invCreate": "Buat kode undangan",
+  "invMessage": "Assalamu'alaikum {name}, ayo isi silsilah {family} di aplikasi Bani.\n\n1. Buka aplikasi Bani, masuk dengan Google\n2. Di Beranda, pilih \"Punya kode undangan?\"\n3. Masukkan kode: *{code}*\n\nKode berlaku {days} hari.\n{link}",
+  "@invMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "family": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      },
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "invCodeFor": "Kode undangan untuk",
+  "invCodeMeta": "{role} · berlaku {days} hari · sekali pakai",
+  "@invCodeMeta": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "invSendWhatsapp": "Kirim lewat WhatsApp",
+  "invCopyCode": "Salin kode",
+  "invCodeCopied": "Kode disalin.",
+  "invSent": "Undangan terkirim",
+  "invSentMeta": "{role} · kode {code}",
+  "@invSentMeta": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "invDaysLeft": "{n} hari lagi",
+  "@invDaysLeft": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "invCancel": "Batalkan",
+  "invActive": "Akses aktif",
+  "invNoneYet": "Belum ada yang diundang.",
+  "invMember": "Anggota",
+  "invUntilGen": "{role} · s/d generasi {n}",
+  "@invUntilGen": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "invStatusActive": "Aktif",
+  "invRevoke": "Cabut akses",
+  "profileSuperAdmin": "Super Admin",
+  "profilePremium": "Premium",
+  "profileFree": "Paket Gratis",
+  "profileUnlimited": "anggota · tanpa batas",
+  "profileOfLimit": "dari {n} anggota",
+  "@profileOfLimit": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profileQuotaHint": "Kuota dipakai bersama oleh pohon milikmu, termasuk isian kontributor.",
+  "profileSettings": "PENGATURAN",
+  "profileLanguage": "Bahasa",
+  "profileContactPrivacy": "Privasi kontak",
+  "profileContactPrivacyValue": "Diatur per anggota",
+  "profileSuperAdminSection": "SUPER ADMIN",
+  "profileImport": "Impor data Bani Mungin",
+  "profileFeedbackInbox": "Saran masuk",
+  "profileOther": "LAINNYA",
+  "profileSendFeedback": "Kirim saran",
+  "profileHelp": "Bantuan via WhatsApp",
+  "profileHelpMessage": "Halo admin Bani, saya butuh bantuan.",
+  "profileLogout": "Keluar",
+  "profileVersion": "Bani versi {v}",
+  "@profileVersion": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "languageIndonesian": "Bahasa Indonesia",
+  "languageEnglish": "English",
+  "importReadFailed": "Gagal membaca data",
+  "importTitle": "Impor Bani Mungin",
+  "importFound": "{n} orang ditemukan",
+  "@importFound": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "importPerGen": "Generasi {g}: {n} orang",
+  "@importPerGen": {
+    "placeholders": {
+      "g": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "importChildrenOf": "Anak dari {name}:",
+  "@importChildrenOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "importKidCount": "{name} ({n} anak)",
+  "@importKidCount": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "importAlready": "Data ini sudah pernah diimpor.",
+  "importWillCreate": "Pohon baru \"Bani Mungin\" akan dibuat dengan kamu sebagai Owner. Data lama tidak diubah.",
+  "importDo": "Impor",
+  "importDone": "{n} anggota berhasil diimpor.",
+  "@importDone": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "importEmpty": "Collection \"mungin\" kosong atau tidak bisa dibaca.",
+  "importNoName": "Tanpa nama",
+  "limitBranchTitle": "Cabang ini sudah sampai batas",
+  "limitMemberTitle": "Kuota anggota sudah penuh",
+  "limitBranchBody": "Cabang {name} gratis sampai generasi {n}. Pilih paket untuk melanjutkan, lalu bayar lewat admin.",
+  "@limitBranchBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "limitMemberBody": "Pohon {family} sudah memakai {n} slot anggota. Tambah kuota untuk melanjutkan.",
+  "@limitMemberBody": {
+    "placeholders": {
+      "family": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "limitWaMessage": "Halo admin Bani, saya ingin {package}.\nPohon: {family} ({familyId})\nAkun: {email} ({uid})",
+  "@limitWaMessage": {
+    "placeholders": {
+      "package": {
+        "type": "String"
+      },
+      "family": {
+        "type": "String"
+      },
+      "familyId": {
+        "type": "String"
+      },
+      "email": {
+        "type": "String"
+      },
+      "uid": {
+        "type": "String"
+      }
+    }
+  },
+  "limitAddQuota": "menambah kuota",
+  "limitNoAdminWa": "Nomor WhatsApp admin belum diatur di config/app.",
+  "limitPickPackage": "Pilih paket",
+  "limitPay": "Bayar {price} via WhatsApp",
+  "@limitPay": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "limitContactAdmin": "Hubungi admin via WhatsApp",
+  "limitAskOwner": "Minta Owner saja",
+  "limitAfterTransfer": "Setelah transfer, admin mengonfirmasi dan kuota terbuka otomatis.",
+  "limitGen": "Gen {n}",
+  "@limitGen": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "pkgBranchName": "Buka Cabang",
+  "pkgBranchDesc": "+2 generasi untuk satu cabang",
+  "pkgMembersName": "Tambah 50 anggota",
+  "pkgMembersDesc": "+50 anggota & +10 foto album",
+  "pkgPremiumName": "Premium Keluarga",
+  "pkgPremiumDesc": "Anggota tanpa batas & 200 foto album",
+  "pkgOnce": "sekali bayar",
+  "pkgYearly": "per tahun",
+  "pkgSave": "Hemat",
+  "moveRootNotAllowed": "Leluhur utama tidak bisa dipindah.",
+  "moveIntoOwnSubtree": "Tidak bisa dipindah ke bawah keturunannya sendiri.",
+  "moveConfirmTitle": "Pindahkan anggota?",
+  "moveConfirmBody": "{name} akan dipindah menjadi anak dari {parent} (generasi {n}).",
+  "@moveConfirmBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "parent": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "moveConfirmBodyWithKids": "{name} beserta {kids} keturunannya akan dipindah menjadi anak dari {parent} (generasi {n}).",
+  "@moveConfirmBodyWithKids": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "kids": {
+        "type": "int"
+      },
+      "parent": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "moveDo": "Pindahkan",
+  "moveDone": "{name} sekarang anak dari {parent}.",
+  "@moveDone": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "parent": {
+        "type": "String"
+      }
+    }
+  },
+  "movePickTitle": "Pindahkan {name}",
+  "@movePickTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "movePickHint": "Pilih orang tua yang benar.",
+  "errPermission": "Ditolak server [permission-denied]. Cek kuota, cabang, atau versi aplikasi.",
+  "errOffline": "Tidak ada koneksi. Perubahan akan dikirim saat online.",
+  "errNotFound": "Data tidak ditemukan.",
+  "errGeneric": "Terjadi kesalahan ({code}).",
+  "@errGeneric": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "errEditDenied": "Perubahan ditolak server [edit/permission-denied]. Pastikan Bani versi terbaru (lihat Profil) dan kamu Admin atau Kontributor cabang ini.",
+  "errConflict": "Data ini baru saja diubah oleh {name}.",
+  "@errConflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "xlsGeneration": "Generasi",
+  "xlsFullName": "Nama lengkap",
+  "xlsNickname": "Panggilan",
+  "xlsGender": "Jenis kelamin",
+  "xlsBirthOrder": "Anak ke-",
+  "xlsParent": "Orang tua",
+  "xlsBirthPlace": "Tempat lahir",
+  "xlsBirthDate": "Tanggal lahir",
+  "xlsStatus": "Status",
+  "xlsDeathDate": "Tanggal wafat",
+  "xlsSpouse": "Pasangan",
+  "xlsOccupation": "Pekerjaan",
+  "xlsShareText": "Silsilah {family}",
+  "@xlsShareText": {
+    "placeholders": {
+      "family": {
+        "type": "String"
+      }
+    }
+  },
+  "fbTitle": "Kirim saran",
+  "fbBody": "Ada ide fitur, keluhan, atau data yang salah? Tulis di sini, langsung sampai ke pengembang.",
+  "fbTypeIdea": "Ide fitur",
+  "fbTypeBug": "Ada masalah",
+  "fbTypeOther": "Lainnya",
+  "fbHint": "Tulis saranmu...",
+  "fbSend": "Kirim",
+  "fbTooShort": "Tulis minimal 5 huruf.",
+  "fbThanks": "Terima kasih! Saranmu sudah terkirim.",
+  "fbInboxTitle": "Saran masuk",
+  "fbInboxEmpty": "Belum ada saran.",
+  "fbMarkDone": "Tandai selesai",
+  "fbDone": "Selesai",
+  "fbNew": "Baru",
+  "treeRefresh": "Muat ulang data",
+  "treeRefreshed": "Data sudah diperbarui.",
+  "albumTitle": "Album kenangan ({n})",
+  "@albumTitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "albumEmpty": "Belum ada foto lama. Tambahkan foto kenangan supaya anak cucu bisa ikut melihat.",
+  "albumAdd": "Tambah foto",
+  "albumUploading": "Mengunggah {done}/{total}...",
+  "@albumUploading": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "albumUploaded": "{n} foto ditambahkan.",
+  "@albumUploaded": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "albumCaptionTitle": "Keterangan foto",
+  "albumCaptionHint": "Contoh: Lebaran di rumah kakek",
+  "albumYearHint": "Tahun (opsional)",
+  "albumDelete": "Hapus foto",
+  "albumDeleteConfirm": "Hapus foto ini dari album?",
+  "albumBy": "Diunggah oleh {name}",
+  "@albumBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "albumQuota": "{used}/{limit} foto di pohon ini",
+  "@albumQuota": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "albumLimitTitle": "Kuota album penuh",
+  "albumLimitBody": "Pohon {family} sudah memakai {n} foto album. Tambah kuota untuk mengunggah lagi.",
+  "@albumLimitBody": {
+    "placeholders": {
+      "family": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "albumEditCaption": "Ubah keterangan",
+  "memberHasAlbum": "Hapus dulu foto album {name} sebelum menghapus anggota ini.",
+  "@memberHasAlbum": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pkgFamilyName": "Keluarga",
+  "pkgFamilyDesc": "Anggota & cabang tanpa batas · 60 foto",
+  "pkgBigFamilyName": "Keluarga Besar",
+  "pkgBigFamilyDesc": "2 pohon · tanpa batas · 150 foto per pohon",
+  "pkgPhotosName": "Paket Foto +30",
+  "pkgPhotosDesc": "+30 foto album untuk pohonmu",
+  "planFree": "Paket Gratis",
+  "planFamily": "Keluarga",
+  "planBigFamily": "Keluarga Besar",
+  "treeLimitTitle": "Pohon kedua butuh Keluarga Besar",
+  "treeLimitBody": "Paket Keluarga Besar bisa punya 2 pohon, misalnya keluarga ayah dan ibu, atau keluargamu dan keluarga pasangan.",
+  "deviceUsed": "HP ini sudah dipakai membuat pohon gratis dengan akun lain. Masuk dengan akun itu, atau pilih paket berbayar.",
+  "albumNeedMembers": "Tambahkan minimal {n} anggota dulu sebelum mengunggah foto album.",
+  "@albumNeedMembers": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "albumDailyLimit": "Batas upload hari ini sudah tercapai ({n} foto). Coba lagi besok.",
+  "@albumDailyLimit": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "tabEvents": "Acara",
+  "treeFilterAllBranches": "Semua cabang",
+  "treeModeList": "Silsilah",
+  "treeModeFocus": "Fokus",
+  "treeShowInFocus": "Lihat dalam mode Fokus",
+  "silsilahMyGeneration": "Generasi kamu: {n}",
+  "@silsilahMyGeneration": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "silsilahThisIsYou": "ini kamu",
+  "silsilahCollapse": "Lipat cabang",
+  "silsilahExpand": "Buka {n} keturunan",
+  "@silsilahExpand": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "silsilahExpandAll": "Buka semua cabang",
+  "silsilahCollapseAll": "Lipat semua cabang",
+  "focusParent": "Orang tua",
+  "focusSibling": "Saudara {pos} dari {total}",
+  "@focusSibling": {
+    "placeholders": {
+      "pos": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "focusTapHint": "Ketuk untuk pindah fokus",
+  "focusChildCount": "{n} anak",
+  "@focusChildCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "focusBorn": "Lahir {year}",
+  "@focusBorn": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "focusChildOrder": "anak ke-{n} dari {total}",
+  "@focusChildOrder": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "focusSpouse": "Pasangan: {name}",
+  "@focusSpouse": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "focusProfile": "Profil",
+  "eventTypeReunion": "Reuni",
+  "eventTypeHalalBihalal": "Halal bihalal",
+  "eventTypeHoliday": "Liburan bareng",
+  "eventTypeArisan": "Arisan",
+  "eventTypeHaul": "Haul, tahlilan",
+  "eventTypeOther": "Lainnya",
+  "eventToday": "Hari ini",
+  "eventTomorrow": "Besok",
+  "eventInDays": "{n} hari lagi",
+  "@eventInDays": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "eventGoingCount": "{n} hadir",
+  "@eventGoingCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "eventYouAreGoing": "Kamu hadir",
+  "eventImGoing": "Saya hadir",
+  "eventNext": "Acara berikutnya",
+  "dateHaul": "haul ke-{n}",
+  "@dateHaul": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "dateBirthday": "ulang tahun ke-{n}",
+  "@dateBirthday": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "rsvpNone": "Belum jawab",
+  "rsvpGoing": "Hadir",
+  "rsvpMaybe": "Mungkin",
+  "rsvpNo": "Tidak",
+  "rsvpQuestion": "Kamu datang?",
+  "rsvpPeople": "Ikut bersamamu, termasuk kamu",
+  "rsvpFewer": "Kurangi",
+  "rsvpMore": "Tambah",
+  "eventsTitle": "Acara keluarga",
+  "eventCreate": "Buat acara",
+  "eventEdit": "Edit acara",
+  "eventsFromTree": "Dari silsilah, 30 hari ke depan",
+  "eventsUpcoming": "Mendatang ({n})",
+  "@eventsUpcoming": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "eventsPast": "Sudah lewat",
+  "eventsNoPast": "Belum ada acara yang lewat.",
+  "eventsNoMore": "Tidak ada acara lain yang dijadwalkan.",
+  "eventsEmptyTitle": "Belum ada acara",
+  "eventsEmptyBody": "Buat reuni, halal bihalal, atau liburan bareng. Undangan sampai ke semua anggota pohon ini.",
+  "eventsEmptyViewer": "Acara yang dibuat keluarga akan muncul di sini.",
+  "eventAgenda": "Susunan acara",
+  "eventNotes": "Catatan",
+  "eventShareWa": "Bagikan undangan ke WhatsApp",
+  "eventShareFooter": "Konfirmasi kehadiran di aplikasi Bani, tab Acara.",
+  "eventDuesPerHousehold": "{amount} per KK",
+  "@eventDuesPerHousehold": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "eventForBranch": "Untuk cabang {name}",
+  "@eventForBranch": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "eventForAll": "Untuk semua anggota pohon",
+  "eventDone": "Sudah selesai",
+  "eventDeleteTitle": "Hapus acara ini?",
+  "eventDeleteBody": "Acara dan semua jawaban kehadiran akan dihapus.",
+  "eventDeleted": "Acara dihapus.",
+  "eventFromTime": "Mulai {time}",
+  "@eventFromTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "eventStartsAt": "Mulai pukul {time}",
+  "@eventStartsAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "eventOrganizer": "Diatur oleh {name}",
+  "@eventOrganizer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "eventBranch": "Cabang {name}",
+  "@eventBranch": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "eventBranchOther": "Lainnya",
+  "eventAttendance": "Kehadiran per cabang",
+  "eventDues": "Iuran",
+  "eventDuesCollected": "terkumpul dari {n} KK",
+  "@eventDuesCollected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "eventDuesLeft": "{n} KK lagi",
+  "@eventDuesLeft": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "eventDuesClaim": "Saya sudah transfer",
+  "eventDuesWaiting": "Menunggu konfirmasi bendahara",
+  "eventDuesConfirmed": "Iuranmu sudah dikonfirmasi",
+  "eventDuesTreasurer": "Konfirmasi pembayaran",
+  "eventDuesClaimed": "Bilang sudah transfer",
+  "eventDuesNote": "Bendahara mencatat manual. Bani tidak memproses pembayaran.",
+  "eventFormTitleRequired": "Isi nama acara dulu.",
+  "eventCreated": "Acara dibuat. Bagikan undangannya ke WhatsApp keluarga.",
+  "eventSaved": "Perubahan disimpan.",
+  "eventFormType": "Jenis acara",
+  "eventFormName": "Nama acara",
+  "eventFormNameHint": "Contoh: Reuni akbar Bani Harun",
+  "eventFormDate": "Tanggal dan jam mulai",
+  "eventFormAddEnd": "Lebih dari sehari? Tambah tanggal selesai",
+  "eventFormUntil": "Sampai {date}",
+  "@eventFormUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "eventFormPlace": "Lokasi",
+  "eventFormPlacePick": "Pilih lokasi",
+  "eventFormInvite": "Siapa yang diundang",
+  "eventFormInviteAll": "Semua bani",
+  "eventFormInviteBranch": "Cabang tertentu",
+  "eventFormInviteHint": "Semua anggota pohon tetap bisa melihat acara ini.",
+  "eventFormDues": "Iuran per KK",
+  "eventFormDuesHint": "Dicatat bendahara, uang ditransfer langsung",
+  "eventFormAgendaAdd": "Tambah",
+  "eventFormAgendaHint": "Contoh: Foto bersama per cabang",
+  "eventFormNotesHint": "Dress code, yang perlu dibawa, info parkir",
+  "eventFormSubmit": "Buat acara",
+  "homeThisWeek": "Pekan ini",
+  "homeHaulOf": "Haul ke-{n} {name}",
+  "@homeHaulOf": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeBirthdayOf": "{name} ulang tahun ke-{n}",
+  "@homeBirthdayOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "detailBirthdayOn": "Ulang tahun {day}",
+  "@detailBirthdayOn": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "detailHaulOn": "Haul setiap {day}",
+  "@detailHaulOn": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "detailDateInEvents": "Muncul untuk semua keluarga di tab Acara.",
+  "detailGrandchildCount": "{n} cucu",
+  "@detailGrandchildCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "focusParentWith": "Orang tua, bersama {name}",
+  "@focusParentWith": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "treeModeChart": "Bagan",
+  "chartZoomIn": "Perbesar",
+  "chartZoomOut": "Perkecil",
+  "chartFit": "Muat satu layar",
+  "silsilahUpTo": "Sampai generasi {n}",
+  "@silsilahUpTo": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "silsilahTapGeneration": "Ketuk angka untuk membatasi generasi",
+  "eventBranchElders": "Sesepuh"
+}

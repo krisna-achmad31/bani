@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "33966153493",
+    "firebase_url": "https://famtree-489cc-default-rtdb.firebaseio.com",
+    "project_id": "famtree-489cc",
+    "storage_bucket": "famtree-489cc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33966153493:android:fb2ce63e63803fe64e131c",
+        "android_client_info": {
+          "package_name": "com.bani.bani"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33966153493-e9rm3b4mmhe6ef9nj316bhe54dg1f969.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bani.bani",
+            "certificate_hash": "6c4147be69cf2c6aaea61481ee555c0c2138d767"
+          }
+        },
+        {
+          "client_id": "33966153493-9bmdt3nekk2n6qk91ham6jqa4f9g17qi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrT57tnMKJeyeRGhKyrbykdjeNRoHnAus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33966153493-9bmdt3nekk2n6qk91ham6jqa4f9g17qi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "33966153493-2gga0tpo7vf8qjra4tn81q2eiuhb029d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kris.famtree.famtree"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33966153493:android:d9b3633c42240b534e131c",
+        "android_client_info": {
+          "package_name": "com.kris.famtree.famtree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33966153493-9bmdt3nekk2n6qk91ham6jqa4f9g17qi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrT57tnMKJeyeRGhKyrbykdjeNRoHnAus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33966153493-9bmdt3nekk2n6qk91ham6jqa4f9g17qi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "33966153493-2gga0tpo7vf8qjra4tn81q2eiuhb029d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kris.famtree.famtree"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
